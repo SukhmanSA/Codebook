@@ -1,7 +1,7 @@
 
 export async function getProducts(searchTerm){
     const response = await fetch(
-        `http://localhost:3000/444/products?name_like=${searchTerm ? searchTerm : ""}`
+        `https://codebook-mock-server-lon1.onrender.com/444/products?name_like=${searchTerm ? searchTerm : ""}`
     );
     if(!response.ok){
         throw { message:response.statusText, status:response.status }
@@ -10,7 +10,7 @@ export async function getProducts(searchTerm){
     return data
 }
 export async function getFeaturedProducts(){
-    const response = await fetch("http://localhost:3000/444/featured_products");
+    const response = await fetch(`https://codebook-mock-server-lon1.onrender.com/444/featured_products`);
     if(!response.ok){
         throw { message:response.statusText, status:response.status }
     }
@@ -19,7 +19,7 @@ export async function getFeaturedProducts(){
 }
 
 export async function getProductDetail(id){
-    const response = await fetch(`http://localhost:3000/444/products/${id}`);
+    const response = await fetch(`https://codebook-mock-server-lon1.onrender.com/444/products/${id}`);
     if(!response.ok){
         throw { message:response.statusText, status:response.status }
     }
@@ -32,7 +32,7 @@ export async function createUserProducts(){
     const token = JSON.parse(sessionStorage.getItem("token"));
     const id = JSON.parse(sessionStorage.getItem("cbid"));
     
-    const response1 = await fetch(`http://localhost:3000/660/users/${id}`,{
+    const response1 = await fetch(`https://codebook-mock-server-lon1.onrender.com/660/users/${id}`,{
         method: "GET",
         headers: {"Content-Type": "application/json", Authorization: `Bearer ${token}`}
     });
@@ -45,7 +45,7 @@ export async function createUserProducts(){
         id
     };
 
-    const response = await fetch(`http://localhost:3000/660/users/${id}`, {
+    const response = await fetch(`https://codebook-mock-server-lon1.onrender.com/660/users/${id}`, {
         method: "PATCH",
         headers: { 
             "Content-Type": "application/json",

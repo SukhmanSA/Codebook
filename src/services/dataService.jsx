@@ -2,7 +2,7 @@
 export async function getUser(){
     const token = JSON.parse(sessionStorage.getItem("token"));
     const id = JSON.parse(sessionStorage.getItem("cbid"))
-    const response = await fetch(`http://localhost:3000/600/users/${id}`,{
+    const response = await fetch(`https://codebook-mock-server-lon1.onrender.com/600/users/${id}`,{
         method:"GET",
         headers:  {"content-Type": "application/json", Authorization: `Bearer ${token}`}
     })
@@ -13,7 +13,7 @@ export async function getUser(){
 export async function getUserOrders(){
     const token = JSON.parse(sessionStorage.getItem("token"));
     const id = JSON.parse(sessionStorage.getItem("cbid"));
-    const response = await fetch(`http://localhost:3000/660/orders?users.id=${id}`,{
+    const response = await fetch(`https://codebook-mock-server-lon1.onrender.com/660/orders?users.id=${id}`,{
         method:"GET",
         headers:  {"content-Type": "application/json", Authorization: `Bearer ${token}`}
     })
@@ -34,7 +34,7 @@ export async function createOrders(total,cartList,user){
                 id
             },
         }
-    const response = await fetch("http://localhost:3000/660/orders",{
+    const response = await fetch("https://codebook-mock-server-lon1.onrender.com/660/orders",{
         method: "POST",
         headers: { "Content-Type":  "application/json", Authorization: `Bearer ${token}` },
         body:JSON.stringify(order)
